@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muhammad Haris — AI/ML Developer &amp; Data Scientist</title>
+  <meta name="description" content="Muhammad Haris is an AI/ML developer and data science student in Lahore building predictive models, NLP apps and generative AI tools.">
+  <meta name="theme-color" content="#ecebe6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23ff5a1f'%3EH%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Decide before first paint whether the entrance plays, so nothing flashes.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro');
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#about">Skip to content</a>
+
+  <!-- Entrance: white page, counter, caption. The cards themselves live in the hero and rise above this. -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-caption">
+      <span class="scramble" id="scramble">Loading work</span>
+      <span class="loader-sub">Muhammad Haris — Portfolio</span>
+    </div>
+    <div class="counter" id="counter"></div>
+  </div>
+  <div class="loader-brand" id="loaderBrand" aria-hidden="true">Haris<span>.</span></div>
+  <button class="loader-skip" id="skipIntro" type="button">Skip intro <kbd>Esc</kbd></button>
+
+  <header class="site-header" id="header">
+    <a class="wordmark" id="wordmark" href="#top" aria-label="Haris — back to top">Haris<span>.</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#stack">Stack</a>
+    </nav>
+    <a class="header-cta" href="#contact"><i class="dot" aria-hidden="true"></i>Let's talk</a>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-label="Introduction">
+      <div class="stage" id="stage">
+        <div class="ring" id="ring" role="group" aria-label="Projects and highlights — drag to explore"></div>
+      </div>
+      <div class="hero-frame" aria-hidden="true"></div>
+      <p class="eyebrow hero-copy">AI/ML Developer · Data Scientist · Lahore</p>
+      <div class="hero-copy">
+        <h1>Crafting intelligent <em>futures</em> with AI &amp; Machine Learning.</h1>
+      </div>
+      <div class="hero-meta">
+        <button class="spin-toggle" id="spinToggle" type="button" aria-pressed="false">Pause</button>
+        <span class="drag-hint" aria-hidden="true">← Drag to explore →</span>
+        <a class="scroll-hint" href="#about">Scroll <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <p class="label">About</p>
+      <div class="about-grid">
+        <p class="statement reveal">
+          Hi, I'm <strong><span data-dia="Haris">Haris</span></strong> — an AI/ML developer and Data Science student who turns data into
+          <em><span data-dia='["applications people can use.","predictive models.","NLP tools.","generative AI assistants."]' data-dia-repeat>applications people can use.</span></em>
+          I work from the backend ML pipeline to the interface on top.
+        </p>
+        <dl class="facts reveal">
+          <div><dt>Role</dt><dd>AI/ML Developer &amp; Data Scientist</dd></div>
+          <div><dt>Studying</dt><dd>BS Data Science, UMT</dd></div>
+          <div><dt>Previously</dt><dd>AI/ML Intern, Lambda Tech</dd></div>
+          <div><dt>Based in</dt><dd>Gulberg, Lahore, Pakistan</dd></div>
+          <div><dt>Languages</dt><dd>English, Urdu</dd></div>
+          <div class="facts-actions">
+            <a class="btn" href="https://hariscodes1.netlify.app/MuhammadHarisResume_page-0001.jpg" target="_blank" rel="noopener">View resume ↗</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/haris-malik-238244320/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="activity" id="activity" aria-labelledby="activity-title">
+      <div class="activity-marquee" aria-hidden="true">
+        <div class="activity-marquee-track">
+          <span>Collect · Clean · Train · Evaluate · Ship · Repeat ·</span><span>Collect · Clean · Train · Evaluate · Ship · Repeat ·</span>
+        </div>
+      </div>
+      <div class="activity-inner">
+        <div class="activity-head">
+          <div>
+            <p class="label">Activity</p>
+            <h2 class="reveal" id="activity-title">A year of building, <em>in public</em>.</h2>
+          </div>
+          <div class="activity-aside reveal">
+            <p>Every contribution from the last twelve months on GitHub, live. The heat map rises into a skyline: drag to orbit it, hover any day to read it.</p>
+            <a class="btn light" href="https://github.com/Muhammad-Haris014" target="_blank" rel="noopener">Follow on GitHub ↗</a>
+          </div>
+        </div>
+        <div class="skyline" id="skyline" data-user="Muhammad-Haris014">
+          <p class="sky-loading">Loading activity…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section work" id="work">
+      <div class="section-head">
+        <p class="label">Selected work</p>
+        <h2 class="reveal">Models that ship as <em>products</em>.</h2>
+      </div>
+      <div class="projects-wrap" id="projectsWrap">
+        <div class="proj-highlight" aria-hidden="true"></div>
+        <div class="proj-preview" aria-hidden="true"></div>
+      <ol class="projects">
+        <li class="project reveal" data-card="1">
+          <span class="p-n">01</span>
+          <div class="p-main"><h3>MBTI Personality Predictor</h3><p>Predicts a user's MBTI personality type from free text using NLP and a scikit-learn classifier, served as an interactive Streamlit app.</p></div>
+          <ul class="p-tags"><li>NLP</li><li>Scikit-learn</li><li>Streamlit</li></ul>
+          <div class="p-links"><a href="https://personality-predictor1.streamlit.app/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/Muhammad-Haris014/MBTI-Personality-Predictor" target="_blank" rel="noopener">Code ↗</a></div>
+        </li>
+        <li class="project reveal" data-card="7">
+          <span class="p-n">02</span>
+          <div class="p-main"><h3>Coding Buddy — Generative AI Chatbot</h3><p>A conversational coding assistant prototype built with GenAI APIs and Python, used to explore LLM and NLP concepts hands-on.</p></div>
+          <ul class="p-tags"><li>GenAI</li><li>LLMs</li><li>Hugging Face</li></ul>
+          <div class="p-links"><a href="https://huggingface.co/spaces/harismalik01/coding_buddy" target="_blank" rel="noopener">Live ↗</a></div>
+        </li>
+        <li class="project reveal" data-card="3">
+          <span class="p-n">03</span>
+          <div class="p-main"><h3>WhatsApp Chat Analysis</h3><p>Upload a chat export and get message frequency, most active users, busiest days and sentiment trends in an interactive dashboard.</p></div>
+          <ul class="p-tags"><li>Pandas</li><li>Matplotlib</li><li>Streamlit</li></ul>
+          <div class="p-links"><a href="https://whatsappchatanaylsis.streamlit.app/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/Muhammad-Haris014/Whatsapp_chat_analysis" target="_blank" rel="noopener">Code ↗</a></div>
+        </li>
+        <li class="project reveal" data-card="6">
+          <span class="p-n">04</span>
+          <div class="p-main"><h3>Customer Churn Prediction</h3><p>Predicts telecom customer churn with Python and scikit-learn. Feature engineering and preprocessing for accuracy, evaluated with confusion matrix, precision, recall and F1.</p></div>
+          <ul class="p-tags"><li>Classification</li><li>Feature engineering</li></ul>
+          <div class="p-links"><span class="muted">Resume project</span></div>
+        </li>
+        <li class="project reveal" data-card="8">
+          <span class="p-n">05</span>
+          <div class="p-main"><h3>Cat vs Dog Image Classifier</h3><p>A CNN in TensorFlow/Keras with data augmentation (flip, rotate, shift), normalisation, train/validation splits, early stopping and learning-rate scheduling.</p></div>
+          <ul class="p-tags"><li>Deep learning</li><li>CNN</li><li>Keras</li></ul>
+          <div class="p-links"><span class="muted">Resume project</span></div>
+        </li>
+        <li class="project reveal" data-card="4">
+          <span class="p-n">06</span>
+          <div class="p-main"><h3>Movie Recommendation System</h3><p>Content-based recommender using cosine similarity over preprocessed movie metadata, with an interactive Streamlit interface.</p></div>
+          <ul class="p-tags"><li>RecSys</li><li>Scikit-learn</li></ul>
+          <div class="p-links"><a href="https://github.com/Muhammad-Haris014/MOVIE_RECOMMENDER_MODEL" target="_blank" rel="noopener">Code ↗</a></div>
+        </li>
+        <li class="project reveal" data-card="5">
+          <span class="p-n">07</span>
+          <div class="p-main"><h3>Student Report Model</h3><p>Analyses student data and predicts performance with regression models, then generates clean visual reports automatically.</p></div>
+          <ul class="p-tags"><li>Regression</li><li>Pandas</li><li>Streamlit</li></ul>
+          <div class="p-links"><a href="https://studentreportmodel-m2mpv9zdlhdt7kqkpmbvv7.streamlit.app/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/Muhammad-Haris014/Student_report_model" target="_blank" rel="noopener">Code ↗</a></div>
+        </li>
+        <li class="project reveal" data-card="2">
+          <span class="p-n">08</span>
+          <div class="p-main"><h3>Image Compressor</h3><p>Browser-based image compression that shrinks file size while keeping visual quality, built on Pillow and Streamlit.</p></div>
+          <ul class="p-tags"><li>Pillow</li><li>Streamlit</li></ul>
+          <div class="p-links"><a href="https://imagecompres.streamlit.app/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/Muhammad-Haris014/Image_Compressor" target="_blank" rel="noopener">Code ↗</a></div>
+        </li>
+      </ol>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience">
+      <div class="section-head">
+        <p class="label">Experience &amp; education</p>
+      </div>
+      <div class="xp-grid">
+        <article class="xp reveal">
+          <p class="xp-when">Jul — Sep 2025 · Lahore</p>
+          <h3>AI/ML Intern</h3>
+          <p class="xp-org">Lambda Tech</p>
+          <p>A technology company specialising in artificial intelligence and machine learning.</p>
+          <ul>
+            <li>Built and trained machine learning models for predictive analytics</li>
+            <li>Designed and implemented AI-powered chatbots to improve customer interaction</li>
+            <li>Collaborated with developers to deliver scalable, data-driven solutions</li>
+          </ul>
+        </article>
+        <article class="xp reveal">
+          <p class="xp-when">Since Jun 2024 · Johar Town</p>
+          <h3>Bachelor of Science in Data Science</h3>
+          <p class="xp-org">University of Management and Technology (UMT)</p>
+        </article>
+        <article class="xp reveal">
+          <p class="xp-when">2022 — 2024 · Lahore</p>
+          <h3>Intermediate in Computer Science</h3>
+          <p class="xp-org">Government Gulberg College</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section journey" id="journey">
+      <div class="section-head">
+        <p class="label">Journey</p>
+        <h2 class="reveal">Three years of <em>learning by building</em>.</h2>
+      </div>
+      <ol class="timeline">
+        <li class="reveal">
+          <span class="year">2025</span>
+          <div><h3>Generative AI &amp; industry work</h3><p>Exploring large language models and multimodal systems, building AI solutions for real problems with a focus on scalability and responsible AI, and contributing to open-source and AI communities.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="year">2024</span>
+          <div><h3>Deep learning, vision &amp; MLOps</h3><p>Real-time object detection with OpenCV and YOLO, CNNs for image classification, LSTMs for time series and NLP, Streamlit and Gradio dashboards, and deployments with Docker and CI/CD.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="year">2023</span>
+          <div><h3>Machine learning fundamentals</h3><p>Supervised and unsupervised learning in depth — regression, classification, clustering — and end-to-end pipelines with scikit-learn, TensorFlow, PyTorch, pandas and NumPy.</p></div>
+        </li>
+        <li class="reveal">
+          <span class="year">2022</span>
+          <div><h3>Foundations</h3><p>Python, statistics and linear algebra. First data analysis projects in Jupyter, first prediction models, and first Kaggle competitions.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section stack" id="stack">
+      <div class="section-head">
+        <p class="label">Stack &amp; tools</p>
+        <h2 class="reveal">The toolkit behind the <em>models</em>.</h2>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-group reveal"><h3>Machine &amp; deep learning</h3><ul><li>TensorFlow</li><li>PyTorch</li><li>Keras</li><li>Scikit-learn</li><li>OpenCV</li><li>Hugging Face</li><li>Predictive analytics</li></ul></div>
+        <div class="stack-group reveal"><h3>Data</h3><ul><li>Python</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>SQL</li><li>Excel</li><li>C/C++</li><li>JavaScript</li></ul></div>
+        <div class="stack-group reveal"><h3>GenAI &amp; automation</h3><ul><li>LangChain</li><li>OpenAI</li><li>Gradio</li><li>Streamlit</li><li>n8n</li><li>Zapier</li><li>VAPI</li><li>REST APIs</li></ul></div>
+        <div class="stack-group reveal"><h3>Deploy &amp; data stores</h3><ul><li>Docker</li><li>Git</li><li>AWS</li><li>Google Cloud</li><li>Azure</li><li>MongoDB</li><li>PostgreSQL</li></ul></div>
+      </div>
+      <div class="process reveal">
+        <p class="label">How a model gets built</p>
+        <ol>
+          <li>Data collection</li><li>Preprocessing</li><li>Exploratory analysis</li><li>Model development</li><li>Training</li><li>Evaluation</li><li>Testing</li><li>Deployment</li><li>Monitoring</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-grid">
+        <div>
+          <p class="label">Contact</p>
+          <h2 class="reveal">Let's build something <em>intelligent</em>.</h2>
+          <p class="contact-lede">Have an AI/ML project in mind? Tell me about it and let's explore the possibilities together.</p>
+          <ul class="contact-list">
+            <li><span>Email</span><a href="mailto:codingacademey1@gmail.com">codingacademey1@gmail.com</a></li>
+            <li><span>Phone</span><a href="tel:+923437354889">+92 343 7354889</a></li>
+            <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/haris-malik-238244320/" target="_blank" rel="noopener">haris-malik ↗</a></li>
+            <li><span>GitHub</span><a href="https://github.com/Muhammad-Haris014" target="_blank" rel="noopener">Muhammad-Haris014 ↗</a></li>
+            <li><span>Location</span><span>Gulberg, Lahore, Pakistan</span></li>
+          </ul>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <label>Full name<input name="name" autocomplete="name" required></label>
+          <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+          <label>Subject<input name="subject" required></label>
+          <label>Message<textarea name="message" rows="5" required></textarea></label>
+          <button class="btn" type="submit">Send via WhatsApp ↗</button>
+          <p class="form-note">Opens WhatsApp with your message ready to send.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="hwf" id="footer">
+    <canvas aria-hidden="true"></canvas>
+    <span class="sr-only">Haris</span>
+    <div class="hwf-top">
+      <div class="hwf-brand">
+        <strong>Muhammad Haris</strong>
+        <span>© <span id="year">2026</span> · Lahore, Pakistan</span>
+      </div>
+      <nav class="hwf-col" aria-label="Site">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="#work">Selected work</a></li>
+          <li><a href="#activity">Activity</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#stack">Stack</a></li>
+        </ul>
+      </nav>
+      <nav class="hwf-col" aria-label="Profiles">
+        <h3>Profiles</h3>
+        <ul>
+          <li><a href="https://github.com/Muhammad-Haris014" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href="https://www.linkedin.com/in/haris-malik-238244320/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href="https://huggingface.co/spaces/harismalik01/coding_buddy" target="_blank" rel="noopener">Hugging Face ↗</a></li>
+          <li><a href="https://hariscodes1.netlify.app/MuhammadHarisResume_page-0001.jpg" target="_blank" rel="noopener">Resume ↗</a></li>
+        </ul>
+      </nav>
+      <nav class="hwf-col" aria-label="Contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:codingacademey1@gmail.com">codingacademey1@gmail.com</a></li>
+          <li><a href="tel:+923437354889">+92 343 7354889</a></li>
+          <li><a href="https://wa.me/923437354889" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="hwf-rule">
+      <span class="hwf-note">AI/ML Developer &amp; Data Scientist</span>
+      <a class="hwf-up" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
