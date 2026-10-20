@@ -33,14 +33,49 @@
 
   <header class="site-header" id="header">
     <a class="wordmark" id="wordmark" href="#top" aria-label="Haris — back to top">Haris<span>.</span></a>
-    <nav class="nav" aria-label="Primary">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#journey">Journey</a>
-      <a href="#stack">Stack</a>
-    </nav>
-    <a class="header-cta" href="#contact"><i class="dot" aria-hidden="true"></i>Let's talk</a>
+    <div class="header-right">
+      <a class="header-cta" href="#contact"><i class="dot" aria-hidden="true"></i>Let's talk</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="siteMenu">
+        <span class="menu-btn-text" aria-hidden="true"><span>Menu</span><span>Close</span></span>
+        <span class="sr-only">Menu</span>
+        <svg class="menu-btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M7.33 16V0h1.34v16z" fill="currentColor"/><path d="M16 8.67H0V7.33h16z" fill="currentColor"/>
+          <path d="M6 7.33h1.33V6c0 .74-.6 1.33-1.33 1.33Z" fill="currentColor"/><path d="M10 7.33H8.67V6c0 .74.6 1.33 1.33 1.33Z" fill="currentColor"/>
+          <path d="M6 8.67h1.33V10c0-.74-.6-1.33-1.33-1.33Z" fill="currentColor"/><path d="M10 8.67H8.67V10c0-.74.6-1.33 1.33-1.33Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
   </header>
+
+  <!-- Full-screen menu: layered panels slide in from the right, links rise into place. -->
+  <div class="site-menu" id="siteMenu" data-nav="closed" hidden>
+    <div class="menu-overlay" data-menu-close></div>
+    <nav class="menu-panel" aria-label="Site">
+      <div class="menu-bg" aria-hidden="true">
+        <div class="backdrop-layer first"></div>
+        <div class="backdrop-layer second"></div>
+        <div class="backdrop-layer"></div>
+        <div class="menu-glow"></div>
+        <div class="menu-index"><span class="menu-index-track"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span></span></div>
+      </div>
+      <div class="menu-inner">
+        <p class="menu-eyebrow" data-menu-fade><span class="menu-eyebrow-text">Navigate</span></p>
+        <ul class="menu-list">
+          <li class="menu-list-item" data-glow="#ff5a1f,#ffb005" data-hint="Eight selected projects"><a class="nav-link" href="#work"><span class="nav-link-text">Work</span><span class="nav-link-num">01</span></a></li>
+          <li class="menu-list-item" data-glow="#c679c4,#ff5a1f" data-hint="Who I am, in brief"><a class="nav-link" href="#about"><span class="nav-link-text">About</span><span class="nav-link-num">02</span></a></li>
+          <li class="menu-list-item" data-glow="#ffb005,#ff5a1f" data-hint="A year on GitHub"><a class="nav-link" href="#activity"><span class="nav-link-text">Activity</span><span class="nav-link-num">03</span></a></li>
+          <li class="menu-list-item" data-glow="#8b8cf6,#c679c4" data-hint="2022 → today"><a class="nav-link" href="#journey"><span class="nav-link-text">Journey</span><span class="nav-link-num">04</span></a></li>
+          <li class="menu-list-item" data-glow="#3ddc84,#2a9df4" data-hint="The tools I build with"><a class="nav-link" href="#stack"><span class="nav-link-text">Stack</span><span class="nav-link-num">05</span></a></li>
+          <li class="menu-list-item" data-glow="#ff5a1f,#c679c4" data-hint="Let's build something"><a class="nav-link" href="#contact"><span class="nav-link-text">Contact</span><span class="nav-link-num">06</span></a></li>
+        </ul>
+        <div class="menu-foot">
+          <a href="mailto:codingacademey1@gmail.com" data-menu-fade>codingacademey1@gmail.com</a>
+          <a href="https://github.com/Muhammad-Haris014" target="_blank" rel="noopener" data-menu-fade>GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/haris-malik-238244320/" target="_blank" rel="noopener" data-menu-fade>LinkedIn ↗</a>
+        </div>
+      </div>
+    </nav>
+  </div>
 
   <main>
     <section class="hero" id="top" aria-label="Introduction">
@@ -48,7 +83,7 @@
         <div class="ring" id="ring" role="group" aria-label="Projects and highlights — drag to explore"></div>
       </div>
       <div class="hero-frame" aria-hidden="true"></div>
-      <p class="eyebrow hero-copy">AI/ML Developer · Data Scientist · Lahore</p>
+      <p class="eyebrow hero-copy">Team Lead &amp; Software Engineer · AI/ML · Lahore</p>
       <div class="hero-copy">
         <h1>Crafting intelligent <em>futures</em> with AI &amp; Machine Learning.</h1>
       </div>
@@ -63,19 +98,21 @@
       <p class="label">About</p>
       <div class="about-grid">
         <p class="statement reveal">
-          Hi, I'm <strong><span data-dia="Haris">Haris</span></strong> — an AI/ML developer and Data Science student who turns data into
-          <em><span data-dia='["applications people can use.","predictive models.","NLP tools.","generative AI assistants."]' data-dia-repeat>applications people can use.</span></em>
-          I work from the backend ML pipeline to the interface on top.
+          Hi, I'm <strong><span data-dia="Haris">Haris</span></strong> — an AI/ML developer and Data Science student.
+          From the backend ML pipeline to the interface on top, I turn data into
+          <em><span data-dia='["applications people can use.","predictive models.","NLP tools.","generative AI assistants."]' data-dia-repeat data-dia-fixed>applications people can use.</span></em>
         </p>
         <dl class="facts reveal">
           <div><dt>Role</dt><dd>AI/ML Developer &amp; Data Scientist</dd></div>
-          <div><dt>Studying</dt><dd>BS Data Science, UMT</dd></div>
+          <div><dt>Currently</dt><dd>Team Lead &amp; Software Engineer, World Bridge Technologies</dd></div>
+          <div><dt>Studying</dt><dd>BS Data Science, <a href="https://www.umt.edu.pk/" target="_blank" rel="noopener" data-preview="assets/previews/umt.jpg">UMT</a></dd></div>
           <div><dt>Previously</dt><dd>AI/ML Intern, Lambda Tech</dd></div>
           <div><dt>Based in</dt><dd>Gulberg, Lahore, Pakistan</dd></div>
           <div><dt>Languages</dt><dd>English, Urdu</dd></div>
+          <div><dt>Elsewhere</dt><dd><a href="https://github.com/Muhammad-Haris014" target="_blank" rel="noopener" data-preview="assets/previews/github.jpg">GitHub</a> · <a href="https://www.linkedin.com/in/haris-malik-238244320/" target="_blank" rel="noopener" data-preview-card="linkedin">LinkedIn</a></dd></div>
           <div class="facts-actions">
-            <a class="btn" href="https://hariscodes1.netlify.app/MuhammadHarisResume_page-0001.jpg" target="_blank" rel="noopener">View resume ↗</a>
-            <a class="btn ghost" href="https://www.linkedin.com/in/haris-malik-238244320/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn" href="https://hariscodes1.netlify.app/MuhammadHarisResume_page-0001.jpg" target="_blank" rel="noopener" data-preview="assets/previews/resume.jpg">View resume ↗</a>
+            <a class="btn ghost" href="https://github.com/Muhammad-Haris014" target="_blank" rel="noopener" data-preview="assets/previews/github.jpg">GitHub ↗</a>
           </div>
         </dl>
       </div>
@@ -165,58 +202,158 @@
       </div>
     </section>
 
-    <section class="section experience" id="experience">
-      <div class="section-head">
-        <p class="label">Experience &amp; education</p>
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="xp-head">
+        <div>
+          <p class="label">Experience &amp; education</p>
+          <h2 id="experience-title">The commit history <em>so far</em>.</h2>
+        </div>
+        <p class="xp-cmd" aria-hidden="true"><span class="xp-prompt">haris@career</span><span class="xp-path">~</span> $ <span class="xp-typed">git log --graph --decorate career</span><i class="xp-caret"></i></p>
       </div>
-      <div class="xp-grid">
-        <article class="xp reveal">
-          <p class="xp-when">Jul — Sep 2025 · Lahore</p>
-          <h3>AI/ML Intern</h3>
-          <p class="xp-org">Lambda Tech</p>
-          <p>A technology company specialising in artificial intelligence and machine learning.</p>
-          <ul>
-            <li>Built and trained machine learning models for predictive analytics</li>
-            <li>Designed and implemented AI-powered chatbots to improve customer interaction</li>
-            <li>Collaborated with developers to deliver scalable, data-driven solutions</li>
-          </ul>
-        </article>
-        <article class="xp reveal">
-          <p class="xp-when">Since Jun 2024 · Johar Town</p>
-          <h3>Bachelor of Science in Data Science</h3>
-          <p class="xp-org">University of Management and Technology (UMT)</p>
-        </article>
-        <article class="xp reveal">
-          <p class="xp-when">2022 — 2024 · Lahore</p>
-          <h3>Intermediate in Computer Science</h3>
-          <p class="xp-org">Government Gulberg College</p>
-        </article>
+
+      <div class="gitlog">
+        <svg class="gitlog-graph" aria-hidden="true"></svg>
+        <ol class="gitlog-list">
+          <li class="commit is-head" data-lane="1">
+            <span class="commit-dot" aria-hidden="true"></span>
+            <div class="commit-card">
+              <p class="commit-meta">
+                <code class="commit-hash">wbt2512</code>
+                <span class="ref ref-head">HEAD → career</span>
+                <span class="ref ref-tag">current</span>
+                <time datetime="2025-12">Dec 2025 — present</time>
+              </p>
+              <h3>Team Lead &amp; Software Engineer</h3>
+              <p class="commit-org">World Bridge Technologies · Lahore</p>
+              <p class="commit-msg">Leading the data mining team at WBT Pakistan, which delivers BPO and call-centre solutions for businesses.</p>
+              <ul class="diff">
+                <li>Lead data cleaning, turning raw information into high-quality, analysis-ready datasets</li>
+                <li>Run feature selection to surface the data points that carry real insight</li>
+                <li>Structure datasets so analysis runs faster and more reliably</li>
+                <li>Contribute to WBT's mission of using data for innovative solutions</li>
+              </ul>
+            </div>
+          </li>
+          <li class="commit" data-lane="1">
+            <span class="commit-dot" aria-hidden="true"></span>
+            <div class="commit-card">
+              <p class="commit-meta">
+                <code class="commit-hash">lmb2507</code>
+                <span class="ref ref-branch">work</span>
+                <time datetime="2025-07">Jul — Sep 2025</time>
+              </p>
+              <h3>AI/ML Intern</h3>
+              <p class="commit-org">Lambda Tech · Lahore</p>
+              <p class="commit-msg">A technology company specialising in artificial intelligence and machine learning.</p>
+              <ul class="diff">
+                <li>Built and trained machine learning models for predictive analytics</li>
+                <li>Designed and implemented AI-powered chatbots to improve customer interaction</li>
+                <li>Collaborated with developers to deliver scalable, data-driven solutions</li>
+              </ul>
+            </div>
+          </li>
+          <li class="commit" data-lane="0" data-fork>
+            <span class="commit-dot" aria-hidden="true"></span>
+            <div class="commit-card">
+              <p class="commit-meta">
+                <code class="commit-hash">umt2408</code>
+                <span class="ref ref-edu">education</span>
+                <span class="ref ref-wip">in progress</span>
+                <time datetime="2024-08">Aug 2024 — present</time>
+              </p>
+              <h3>BS Data Science</h3>
+              <p class="commit-org">University of Management and Technology (UMT) · Johar Town</p>
+              <p class="commit-msg">A strong foundation in machine learning and data analysis. The <code>work</code> branch forks from here.</p>
+            </div>
+          </li>
+          <li class="commit" data-lane="0">
+            <span class="commit-dot" aria-hidden="true"></span>
+            <div class="commit-card">
+              <p class="commit-meta">
+                <code class="commit-hash">ggc2208</code>
+                <span class="ref ref-edu">education</span>
+                <time datetime="2022-08">Aug 2022 — Aug 2024</time>
+              </p>
+              <h3>Intermediate in Computer Science</h3>
+              <p class="commit-org">Government Gulberg College · Lahore</p>
+            </div>
+          </li>
+          <li class="commit is-root" data-lane="0">
+            <span class="commit-dot" aria-hidden="true"></span>
+            <div class="commit-card">
+              <p class="commit-meta"><code class="commit-hash">0000001</code><time datetime="2022">2022</time></p>
+              <h3 class="commit-init">initial commit: <span>print("hello, world")</span></h3>
+            </div>
+          </li>
+        </ol>
+        <p class="gitlog-end" aria-hidden="true"><b>(END)</b>5 commits on 2 branches · HEAD → career</p>
       </div>
     </section>
 
-    <section class="section journey" id="journey">
-      <div class="section-head">
-        <p class="label">Journey</p>
-        <h2 class="reveal">Three years of <em>learning by building</em>.</h2>
+    <section class="journey-run" id="journey" aria-labelledby="journey-title">
+      <div class="jr-track">
+        <div class="jr-sticky">
+          <header class="jr-head">
+            <div>
+              <p class="label">Journey</p>
+              <h2 id="journey-title">Four years of <em>learning by building</em>.</h2>
+              <p class="jr-sub">Read as a training run: every year an epoch, every skill a checkpoint.</p>
+            </div>
+            <dl class="jr-readout" aria-hidden="true">
+              <div><dt>Epoch</dt><dd><span class="jr-epoch">01</span><small>/05</small></dd></div>
+              <div><dt>Loss</dt><dd class="jr-loss">0.920</dd></div>
+              <div><dt>Accuracy</dt><dd class="jr-acc">0.320</dd></div>
+            </dl>
+          </header>
+
+          <figure class="jr-chart" aria-hidden="true">
+            <svg class="jr-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+              <path class="jr-acc-line" pathLength="1"/>
+              <path class="jr-loss-fill"/>
+              <path class="jr-loss-line" pathLength="1"/>
+            </svg>
+            <span class="jr-axis jr-axis-y">loss ↓ · accuracy ↑</span>
+            <span class="jr-axis jr-axis-x">epoch →</span>
+            <i class="jr-scan"><b></b></i>
+          </figure>
+
+          <ol class="jr-cards">
+            <li class="jr-card" data-note="first models" data-slug="foundations">
+              <p class="jr-meta"><span>Epoch 01</span><span>2022</span></p>
+              <h3>Foundations</h3>
+              <p>Python, statistics and linear algebra. First data analysis projects in Jupyter, first prediction models, and first Kaggle competitions.</p>
+              <ul class="jr-tags"><li>Python</li><li>Statistics</li><li>Jupyter</li><li>Kaggle</li></ul>
+            </li>
+            <li class="jr-card" data-note="it clicks" data-slug="ml-fundamentals">
+              <p class="jr-meta"><span>Epoch 02</span><span>2023</span></p>
+              <h3>Machine learning fundamentals</h3>
+              <p>Supervised and unsupervised learning in depth (regression, classification, clustering) and end-to-end pipelines with scikit-learn, TensorFlow, PyTorch, pandas and NumPy.</p>
+              <ul class="jr-tags"><li>scikit-learn</li><li>TensorFlow</li><li>PyTorch</li></ul>
+            </li>
+            <li class="jr-card" data-note="vision + MLOps" data-slug="deep-learning-cv">
+              <p class="jr-meta"><span>Epoch 03</span><span>2024</span></p>
+              <h3>Deep learning, vision &amp; MLOps</h3>
+              <p>Real-time object detection with OpenCV and YOLO, CNNs for image classification, LSTMs for time series and NLP, Streamlit and Gradio dashboards, and deployments with Docker and CI/CD.</p>
+              <ul class="jr-tags"><li>OpenCV · YOLO</li><li>CNN · LSTM</li><li>Docker</li></ul>
+            </li>
+            <li class="jr-card" data-note="the GenAI era" data-slug="genai-industry">
+              <p class="jr-meta"><span>Epoch 04</span><span>2025</span></p>
+              <h3>Generative AI &amp; industry work</h3>
+              <p>Large language models and multimodal systems, an AI/ML internship at Lambda Tech, and AI solutions for real problems with a focus on scalability and responsible AI.</p>
+              <ul class="jr-tags"><li>LLMs</li><li>Multimodal</li><li>Lambda Tech</li></ul>
+            </li>
+            <li class="jr-card" data-note="agents arrive" data-slug="agentic-ai">
+              <p class="jr-meta"><span>Epoch 05</span><span>2026 →</span></p>
+              <h3>Agentic AI</h3>
+              <p>Leading a data team as Team Lead &amp; Software Engineer at World Bridge Technologies, and moving from answering to acting: LLM agents that plan and call tools with LangChain and OpenAI, workflows in n8n and Zapier, voice agents with VAPI.</p>
+              <ul class="jr-tags"><li>Team lead</li><li>AI agents</li><li>LangChain</li><li>n8n · VAPI</li></ul>
+            </li>
+          </ol>
+
+          <p class="jr-log" aria-hidden="true"><span class="jr-log-text"></span><i class="jr-caret"></i></p>
+          <div class="jr-rail" aria-hidden="true"><i></i></div>
+        </div>
       </div>
-      <ol class="timeline">
-        <li class="reveal">
-          <span class="year">2025</span>
-          <div><h3>Generative AI &amp; industry work</h3><p>Exploring large language models and multimodal systems, building AI solutions for real problems with a focus on scalability and responsible AI, and contributing to open-source and AI communities.</p></div>
-        </li>
-        <li class="reveal">
-          <span class="year">2024</span>
-          <div><h3>Deep learning, vision &amp; MLOps</h3><p>Real-time object detection with OpenCV and YOLO, CNNs for image classification, LSTMs for time series and NLP, Streamlit and Gradio dashboards, and deployments with Docker and CI/CD.</p></div>
-        </li>
-        <li class="reveal">
-          <span class="year">2023</span>
-          <div><h3>Machine learning fundamentals</h3><p>Supervised and unsupervised learning in depth — regression, classification, clustering — and end-to-end pipelines with scikit-learn, TensorFlow, PyTorch, pandas and NumPy.</p></div>
-        </li>
-        <li class="reveal">
-          <span class="year">2022</span>
-          <div><h3>Foundations</h3><p>Python, statistics and linear algebra. First data analysis projects in Jupyter, first prediction models, and first Kaggle competitions.</p></div>
-        </li>
-      </ol>
     </section>
 
     <section class="section stack" id="stack">
@@ -257,7 +394,10 @@
           <label>Email address<input name="email" type="email" autocomplete="email" required></label>
           <label>Subject<input name="subject" required></label>
           <label>Message<textarea name="message" rows="5" required></textarea></label>
-          <button class="btn" type="submit">Send via WhatsApp ↗</button>
+          <button class="btn btn-aurora" type="submit">
+            <svg class="btn-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.5l1.7 4.8 4.8 1.7-4.8 1.7L10 16.5l-1.7-4.8L3.5 10l4.8-1.7L10 3.5z"/><path d="M18 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z"/></svg>
+            <span>Send via WhatsApp ↗</span>
+          </button>
           <p class="form-note">Opens WhatsApp with your message ready to send.</p>
         </form>
       </div>

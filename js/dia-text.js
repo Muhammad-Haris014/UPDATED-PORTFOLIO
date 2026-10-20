@@ -41,6 +41,8 @@ export function mountDiaText(el, {
   delay = 0,
   repeat = el.hasAttribute('data-dia-repeat'),
   repeatDelay = 1.1,
+  // Hold the widest phrase's width so the surrounding text never re-wraps (no layout shift).
+  fixedWidth = el.hasAttribute('data-dia-fixed'),
 } = {}) {
   if (!texts.length) return;
   const multi = texts.length > 1;
@@ -76,7 +78,7 @@ export function mountDiaText(el, {
     el.appendChild(ghost);
     widths = texts.map((t) => { ghost.textContent = t; return ghost.getBoundingClientRect().width; });
     ghost.remove();
-    el.style.width = widths[index] + 'px';
+    el.style.width = (fixedWidth ? Math.max(...widths) : widths[index]) + 'px';
   };
 
   // Hidden tabs pause animation frames on their own, and the sweep is time-based, so it simply
@@ -96,7 +98,7 @@ export function mountDiaText(el, {
   const next = () => {
     index = (index + 1) % texts.length;
     setText(index);
-    el.style.width = widths[index] + 'px';
+    if (!fixedWidth) el.style.width = widths[index] + 'px';
     inner.animate(
       [{ opacity: 0.58, filter: 'blur(8px)', transform: 'translateY(5.5px)' }, { opacity: 1, filter: 'blur(0)', transform: 'translateY(0)' }],
       { duration: 340, easing: 'cubic-bezier(.22,1,.36,1)' },

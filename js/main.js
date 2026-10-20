@@ -3,6 +3,11 @@ import { CARDS, cardMarkup, cardFront } from './cards.js';
 import { mountSkyline, loadContributions } from './skyline.js';
 import { mountHalftone } from './halftone.js';
 import { mountDiaText } from './dia-text.js';
+import { mountLinkPreviews } from './link-preview.js';
+import { mountMenu } from './menu.js';
+import { mountWhatsAppOrb } from './wa-orb.js';
+import { mountJourney } from './journey.js';
+import { mountGitlog } from './gitlog.js';
 
 const $ = (s) => document.querySelector(s);
 const html = document.documentElement;
@@ -355,9 +360,38 @@ onScroll();
 
 $('#year').textContent = new Date().getFullYear();
 
+/* ---------------- full-screen menu ---------------- */
+
+mountMenu({
+  button: $('#menuBtn'),
+  menu: $('#siteMenu'),
+  header,
+  inertTargets: [document.querySelector('main'), $('#footer'), $('#wordmark'), document.querySelector('.header-cta')],
+});
+
+/* ---------------- experience: a git commit graph ---------------- */
+
+const experienceEl = $('#experience');
+if (experienceEl) mountGitlog(experienceEl);
+
+/* ---------------- journey: a training run ---------------- */
+
+const journeyEl = $('#journey');
+if (journeyEl) mountJourney(journeyEl);
+
 /* ---------------- about: colour-sweep text ---------------- */
 
 document.querySelectorAll('[data-dia]').forEach((el) => mountDiaText(el));
+
+mountLinkPreviews(document, {
+  linkedin: `<span class="lp-li">
+      <span class="lp-li-avatar">MH</span>
+      <strong>Muhammad Haris</strong>
+      <span>Team Lead & Software Engineer · World Bridge Technologies</span>
+      <span>Lahore, Pakistan</span>
+      <em>View profile on LinkedIn ↗</em>
+    </span>`,
+});
 
 /* ---------------- footer: halftone wordmark ---------------- */
 
@@ -467,9 +501,5 @@ if (skyEl) {
   });
 })();
 
-$('#contactForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const f = new FormData(e.currentTarget);
-  const text = `Hi Haris, I'm ${f.get('name')} (${f.get('email')}).\n\n*${f.get('subject')}*\n${f.get('message')}`;
-  window.open(`https://wa.me/923437354889?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-});
+// Contact: the send button becomes a thinking orb, then a card with the message ready for WhatsApp.
+mountWhatsAppOrb($('#contactForm'), { phone: '923437354889' });

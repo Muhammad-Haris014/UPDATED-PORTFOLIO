@@ -83,8 +83,8 @@ const ART = {
     ${mono(16, 214, 'Conv2D → Pool → Dense · 0.97', 10.5, c.fg, 'fill-opacity=".75"')}`,
 
   intern: (c) => `
-    ${mono(14, 40, '07 — 09', 40, c.fg)}${mono(14, 70, '2025 · Lahore', 13, c.ac)}
-    ${['Trained predictive ML models', 'Shipped AI-powered chatbots', 'Built data-driven tools'].map((t, i) =>
+    ${mono(14, 40, 'HEAD →', 40, c.fg)}${mono(14, 70, 'Dec 2025 → now · Lahore', 13, c.ac)}
+    ${['Leading the data mining team', 'Clean, transform, select', 'Analysis-ready datasets'].map((t, i) =>
       `<circle cx="20" cy="${118 + i * 32}" r="4" fill="${c.ac}"/>${mono(34, 122 + i * 32, t, 12, c.fg)}`).join('')}`,
 
   umt: (c) => `
@@ -107,8 +107,10 @@ const ART = {
 
   journey: (c) => `
     <line x1="30" y1="14" x2="30" y2="210" stroke="${c.fg}" stroke-opacity=".3"/>
-    ${[['2022', 'Python, stats, first Kaggle'], ['2023', 'ML fundamentals, pipelines'], ['2024', 'Deep learning, CV, MLOps'], ['2025', 'GenAI, LLMs, internship']].map(([y, t], i) =>
-      `<circle cx="30" cy="${24 + i * 58}" r="${i === 3 ? 8 : 5}" fill="${c.fg}" ${i === 3 ? 'class="pulse"' : ''}/>${mono(50, 30 + i * 58, y, 20, c.fg, 'font-weight="600"')}${mono(50, 48 + i * 58, t, 11, c.fg, 'fill-opacity=".7"')}`).join('')}`,
+    ${[['2022', 'Python, stats, first Kaggle'], ['2023', 'ML fundamentals, pipelines'], ['2024', 'Deep learning, CV, MLOps'], ['2025', 'GenAI, LLMs, internship'], ['2026', 'Agentic AI, tools, voice']].map(([y, t], i, all) => {
+      const last = i === all.length - 1, cy = 20 + i * 46;
+      return `<circle cx="30" cy="${cy}" r="${last ? 8 : 5}" fill="${c.fg}" ${last ? 'class="pulse"' : ''}/>${mono(50, cy + 6, y, 18, c.fg, 'font-weight="600"')}${mono(50, cy + 22, t, 10.5, c.fg, 'fill-opacity=".7"')}`;
+    }).join('')}`,
 
   services: (c) => ['Machine Learning', 'Deep Learning', 'Computer Vision', 'NLP', 'Predictive Modeling', 'AI Consulting'].map((t, i) =>
     `${mono(14, 26 + i * 36, String(i + 1).padStart(2, '0'), 11, c.ac)}<text x="44" y="${27 + i * 36}" font-family="Inter Tight, sans-serif" font-size="19" fill="${c.fg}">${t}</text><line x1="14" y1="${38 + i * 36}" x2="246" y2="${38 + i * 36}" stroke="${c.fg}" stroke-opacity=".12"/>`).join(''),
@@ -129,11 +131,11 @@ export const CARDS = [
   { art: 'churn', tag: 'Project · Classification', title: 'Customer Churn Prediction', sub: 'Telecom churn with scikit-learn', cta: 'Details', href: '#work', bg: '#2e1e07', fg: '#fff6e5', ac: '#ffb020' },
   { art: 'chatbot', tag: 'Project · GenAI', title: 'Coding Buddy', sub: 'Generative AI chatbot prototype', cta: 'Try it ↗', href: 'https://huggingface.co/spaces/harismalik01/coding_buddy', bg: '#181818', fg: '#f6f6f6', ac: '#ffd21e' },
   { art: 'cnn', tag: 'Project · Deep Learning', title: 'Cat vs Dog Classifier', sub: 'CNN in TensorFlow / Keras', cta: 'Details', href: '#work', bg: '#211538', fg: '#fbefff', ac: '#ff7ad9' },
-  { art: 'intern', tag: 'Experience', title: 'AI/ML Intern', sub: 'Lambda Tech', cta: 'Experience', href: '#experience', bg: '#f1efe8', fg: '#141414', ac: '#ff5a1f' },
+  { art: 'intern', tag: 'Experience · Now', title: 'Team Lead & Software Engineer', sub: 'World Bridge Technologies', cta: 'Experience', href: '#experience', bg: '#f1efe8', fg: '#141414', ac: '#ff5a1f' },
   { art: 'umt', tag: 'Education', title: 'University of Management & Technology', sub: '', cta: 'Education', href: '#experience', bg: '#e6ebfb', fg: '#101a3d', ac: '#1d3fbb' },
   { art: 'stack', tag: 'Stack · Core', title: 'Python to production', sub: 'TensorFlow, PyTorch, scikit-learn', cta: 'Full stack', href: '#stack', bg: '#ff5a1f', fg: '#140a05', ac: '#140a05' },
   { art: 'llm', tag: 'Stack · GenAI', title: 'LLMs & automation', sub: 'Agents, RAG, voice & workflows', cta: 'Full stack', href: '#stack', bg: '#0d0d0d', fg: '#f4f4f4', ac: '#a5b4fc' },
-  { art: 'journey', tag: 'Journey', title: '3+ years building with AI', sub: '', cta: 'Timeline', href: '#journey', bg: '#d9f99d', fg: '#13200a', ac: '#13200a' },
+  { art: 'journey', tag: 'Journey', title: '4 years building with AI', sub: '', cta: 'Timeline', href: '#journey', bg: '#d9f99d', fg: '#13200a', ac: '#13200a' },
   { art: 'services', tag: 'Services', title: 'What I can do for you', sub: '', cta: 'Get in touch', href: '#contact', bg: '#14141a', fg: '#f2f2f7', ac: '#a5b4fc' },
   { art: 'contact', tag: 'Contact', title: "Let's build something", sub: 'Usually replies within a day', cta: 'Email me ↗', href: 'mailto:codingacademey1@gmail.com', bg: '#ff5a1f', fg: '#140a05', ac: '#140a05' },
 ];
