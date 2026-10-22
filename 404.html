@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Muhammad Haris</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0d0d0c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23ff5a1f'%3EH%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@500&display=swap">
+  <style>
+    :root { --ink: #0d0d0c; --paper: #f4f1ea; --muted: #a9a59b; --accent: #ff5a1f; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; display: grid; place-items: center; padding: 24px; overflow: hidden;
+      background: var(--ink); color: var(--paper); font: 16px/1.5 "Inter Tight", system-ui, sans-serif;
+      background-image: radial-gradient(rgba(244, 241, 234, .1) 1px, transparent 1.2px); background-size: 24px 24px;
+    }
+    body::before { /* ember glow */
+      content: ""; position: fixed; inset: auto -10% -40% -10%; height: 80%; z-index: -1;
+      background: radial-gradient(closest-side, rgba(242, 38, 111, .28), rgba(255, 116, 23, .18) 45%, transparent 75%);
+      filter: blur(30px);
+    }
+    main { max-width: 640px; text-align: center; }
+    .code {
+      margin: 0; font: 700 clamp(120px, 30vw, 240px)/.85 "Inter Tight", sans-serif; letter-spacing: -0.06em;
+      background: linear-gradient(120deg, #f2266f, #ff7417 50%, #ffcf33); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    h1 { margin: 18px 0 10px; font: 400 italic clamp(28px, 5vw, 44px)/1.1 "Instrument Serif", Georgia, serif; }
+    p { margin: 0 auto 30px; max-width: 30em; color: var(--muted); }
+    .log { display: inline-block; margin-bottom: 30px; padding: 10px 14px; border-radius: 10px; background: #161615; border: 1px solid rgba(244, 241, 234, .1); font: 500 13px/1.4 "JetBrains Mono", monospace; color: #b9f5cf; }
+    a.home {
+      display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; text-decoration: none;
+      background: var(--paper); color: var(--ink); font: 500 13px/1 "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .08em;
+      transition: background .2s ease;
+    }
+    a.home:hover, a.home:focus-visible { background: var(--accent); }
+    a.home:focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="code" aria-hidden="true">404</p>
+    <h1>This page wasn't in the training data.</h1>
+    <p>The link may be old or mistyped. Everything lives on the home page.</p>
+    <div class="log" aria-hidden="true">$ git checkout main</div><br>
+    <a class="home" href="/">Back to the portfolio ↗</a>
+  </main>
+</body>
+</html>

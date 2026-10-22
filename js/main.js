@@ -7,7 +7,7 @@ import { mountLinkPreviews } from './link-preview.js';
 import { mountMenu } from './menu.js';
 import { mountWhatsAppOrb } from './wa-orb.js';
 import { mountJourney } from './journey.js';
-import { mountGitlog } from './gitlog.js';
+import { mountLedger } from './ledger.js';
 
 const $ = (s) => document.querySelector(s);
 const html = document.documentElement;
@@ -369,10 +369,10 @@ mountMenu({
   inertTargets: [document.querySelector('main'), $('#footer'), $('#wordmark'), document.querySelector('.header-cta')],
 });
 
-/* ---------------- experience: a git commit graph ---------------- */
+/* ---------------- experience: the pigment ledger ---------------- */
 
 const experienceEl = $('#experience');
-if (experienceEl) mountGitlog(experienceEl);
+if (experienceEl) mountLedger(experienceEl, { palette: 'ember' });
 
 /* ---------------- journey: a training run ---------------- */
 

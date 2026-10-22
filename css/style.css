@@ -564,7 +564,7 @@ html.intro:not(.entered) .hero::after { opacity: 0; }
 }
 
 /* Hover list: a bar slides to the hovered row, the row inverts, and the project's card opens beside the cursor. */
-.projects-wrap { position: relative; }
+.projects-wrap { position: relative; overflow-x: clip; overflow-clip-margin: 40px; } /* the floating preview never widens the page */
 .proj-highlight {
   position: absolute; left: 0; right: 0; top: 0; height: 0; z-index: 0; pointer-events: none;
   background: var(--ink); border-radius: 14px; opacity: 0;
@@ -612,135 +612,116 @@ html.intro:not(.entered) .hero::after { opacity: 0; }
 .p-links a:hover { color: var(--accent); }
 .muted { color: var(--ink-2); }
 
-/* ---------- Experience & education: a git commit graph ---------- */
-.experience {
-  --lane-0: #a5a6f6; --lane-1: var(--accent); --head: #3ddc84; --diff: #7ee2a8;
-  background: #0d0d0c; color: #f4f1ea; border-top: 0;
-  background-image: radial-gradient(60% 50% at 0% 0%, rgba(165, 166, 246, .08), transparent 70%), radial-gradient(50% 40% at 100% 100%, rgba(255, 90, 31, .08), transparent 70%);
+/* ---------- Experience & education: the pigment ledger ---------- */
+.pel-root {
+  --pel-bg: #0d0d0c; --pel-ink: #f4f1ea;
+  --pel-muted: color-mix(in oklab, var(--pel-ink) 62%, transparent);
+  --pel-line: color-mix(in oklab, var(--pel-ink) 16%, transparent);
+  --pel-display: var(--sans);
+  --pel-ease: cubic-bezier(.23, 1, .32, 1);
+  --pel-pad: clamp(.5rem, 1.1cqi, .9rem);
+  position: relative; width: 100%; overflow-x: clip; container-type: inline-size; isolation: isolate;
+  background: var(--pel-bg); color: var(--pel-ink);
+  padding: clamp(4rem, 9cqi, 8rem) var(--gutter);
+  -webkit-font-smoothing: antialiased;
 }
-.experience .label { color: #a9a59b; }
-.xp-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 22px 40px; margin-bottom: clamp(36px, 6vh, 64px); }
-.xp-head h2 { font-size: clamp(36px, 5.2vw, 78px); line-height: 1; letter-spacing: -0.045em; }
-.xp-head h2 em { color: var(--lane-0); }
-.xp-cmd {
-  margin: 0; padding: 12px 16px; border-radius: 12px; min-width: min(100%, 470px);
-  background: #161615; border: 1px solid rgba(244, 241, 234, .1);
-  font: 500 13px/1.4 var(--mono); color: #e9e4da; white-space: nowrap; overflow: hidden;
+.pel-root .label { color: var(--pel-muted); }
+.pel-wrap { max-width: 84rem; margin: 0 auto; }
+.pel-head { position: relative; z-index: 1; margin: 0 0 clamp(1.75rem, 4cqi, 3.25rem); }
+.pel-title { margin: 0; font-family: var(--pel-display); font-size: clamp(2.3rem, 5.2cqi, 4.6rem); font-weight: 600; letter-spacing: -.045em; line-height: 1; }
+.pel-title em { color: #ff7417; }
+.pel-intro { margin: .9rem 0 0; max-width: 46ch; font-size: 1.05rem; line-height: 1.5; color: var(--pel-muted); }
+.pel-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--pel-line); }
+.pel-row { position: relative; border-bottom: 1px solid var(--pel-line); }
+.pel-ink { position: absolute; left: -40px; top: -64px; width: calc(100% + 80px); height: calc(100% + 128px); max-width: none; display: block; z-index: 0; pointer-events: none; }
+.pel-h { margin: 0; font: inherit; letter-spacing: normal; position: relative; z-index: 1; }
+.pel-trigger {
+  appearance: none; background: none; border: 0; border-radius: 2px; margin: 0; width: 100%;
+  padding: clamp(1.1rem, 2.3cqi, 1.85rem) var(--pel-pad); color: inherit; font: inherit; text-align: inherit; cursor: pointer;
+  display: grid; grid-template-columns: minmax(8.5rem, 15rem) minmax(0, 1fr); align-items: center; column-gap: 1.5rem;
+  -webkit-tap-highlight-color: transparent;
 }
-.xp-prompt { color: var(--head); }
-.xp-path { color: var(--lane-0); margin: 0 2px 0 4px; }
-.xp-caret { display: inline-block; width: 8px; height: 1.1em; margin-left: 2px; vertical-align: text-bottom; background: currentColor; animation: jr-blink 1s steps(1) infinite; }
-
-.gitlog { position: relative; }
-.gitlog-graph { position: absolute; left: 0; top: 0; width: 64px; overflow: visible; pointer-events: none; }
-.lane { fill: none; stroke-width: 2.5; stroke-linecap: round; transition: stroke-width .3s ease, opacity .3s ease, filter .3s ease; }
-.lane-0 { stroke: var(--lane-0); }
-.lane-1 { stroke: url(#gl-head); }
-.lane-wip { stroke-dasharray: 2 7; opacity: .55; }
-.gitlog[data-hover-lane="0"] .lane-1, .gitlog[data-hover-lane="1"] .lane-0 { opacity: .25; }
-.gitlog[data-hover-lane="0"] .lane.lane-0, .gitlog[data-hover-lane="1"] .lane.lane-1 { stroke-width: 3.5; }
-.gitlog[data-hover-lane="1"] .lane.lane-1 { filter: drop-shadow(0 0 8px rgba(255, 90, 31, .7)); }
-.gitlog[data-hover-lane="0"] .lane.lane-0 { filter: drop-shadow(0 0 8px rgba(165, 166, 246, .7)); }
-.gitlog[data-hover-lane="0"] .lane-glow.lane-0, .gitlog[data-hover-lane="1"] .lane-glow.lane-1 { opacity: .35; }
-
-/* A soft glow under every lane, and pulses of light that flow up the branches towards HEAD. */
-.lane-glow { fill: none; stroke-width: 10; stroke-linecap: round; opacity: .16; filter: blur(4px); }
-.lane-glow.lane-0 { stroke: var(--lane-0); }
-.lane-glow.lane-1 { stroke: var(--lane-1); }
-.lane-pulse { filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 14px currentColor); }
-.lane-pulse.on-0 { color: var(--lane-0); fill: #e4e4ff; }
-.lane-pulse.on-1 { color: var(--lane-1); fill: #ffd7c2; }
-
-.gitlog-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
-.commit { position: relative; padding-left: 80px; }
-.commit-dot {
-  position: absolute; top: 26px; width: 14px; height: 14px; border-radius: 50%;
-  background: #0d0d0c; border: 3px solid var(--lane-0); transition: scale .3s var(--ease-out), box-shadow .3s ease;
+.pel-trigger:focus-visible { outline: 2px solid var(--pel-ink); outline-offset: -2px; border-radius: 4px; }
+.pel-when {
+  display: flex; align-items: center; gap: .85rem; font: italic 400 clamp(1rem, 1.5cqi, 1.25rem)/1.2 var(--serif);
+  color: var(--pel-muted); font-variant-numeric: tabular-nums; transition: color .2s ease, transform .3s var(--pel-ease);
 }
-.commit[data-lane="0"] .commit-dot { left: 11px; }
-.commit[data-lane="1"] .commit-dot { left: 39px; border-color: var(--lane-1); }
-.commit.is-head .commit-dot { border-color: var(--head); background: var(--head); box-shadow: 0 0 0 0 rgba(61, 220, 132, .6); animation: head-pulse 2s ease-out infinite; }
-.commit.is-root .commit-dot { border-style: dashed; }
-.commit:hover .commit-dot { scale: 1.25; }
-@keyframes head-pulse { 0% { box-shadow: 0 0 0 0 rgba(61, 220, 132, .55); } 80%, 100% { box-shadow: 0 0 0 12px rgba(61, 220, 132, 0); } }
-
-.commit-card {
-  padding: 18px 22px 20px; border-radius: 16px; background: #141413; border: 1px solid rgba(244, 241, 234, .08);
-  transition: border-color .3s ease, background .3s ease, translate .4s var(--ease-out);
+.pel-x { position: relative; display: block; width: .78rem; height: .78rem; flex: none; transition: transform .34s var(--pel-ease); }
+.pel-x::before, .pel-x::after { content: ""; position: absolute; left: 0; top: 50%; width: 100%; height: 1.5px; margin-top: -.75px; background: currentColor; border-radius: 1px; }
+.pel-x::after { transform: rotate(90deg); }
+.pel-row[data-open="true"] .pel-x { transform: rotate(45deg); }
+.pel-namecell { display: flex; flex-direction: column; align-items: flex-end; min-width: 0; text-align: right; }
+.pel-name {
+  display: inline-block; white-space: nowrap; font-family: var(--pel-display);
+  font-size: clamp(2.4rem, 8cqi, 7rem); font-weight: 700; letter-spacing: -.05em; line-height: .9; text-transform: uppercase;
+  padding: 0 .02em .04em 0; transform-origin: 100% 60%; transition: transform .32s var(--pel-ease);
 }
-.commit:hover .commit-card { background: #191918; border-color: rgba(244, 241, 234, .18); translate: 4px 0; }
-
-/* Cursor spotlight: a soft light follows the pointer inside the card, and the border lights up near it. */
-.commit-card { position: relative; isolation: isolate; --glow: var(--lane-0); }
-.commit[data-lane="1"] .commit-card { --glow: var(--lane-1); }
-.commit.is-head .commit-card { --glow: var(--head); }
-.commit-card::before, .commit-card::after {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .35s ease;
+.pel-mark { font-weight: 400; font-size: .6em; vertical-align: .62em; margin-left: .05em; letter-spacing: 0; }
+.pel-role {
+  display: inline-flex; align-items: center; gap: .55rem; margin-top: .6rem;
+  font: 600 .72rem/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--pel-muted); transition: color .3s ease;
 }
-.commit-card::before {
-  z-index: -1;
-  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--glow) 13%, transparent), transparent 65%);
+.pel-live { width: 7px; height: 7px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 3px rgba(61, 220, 132, .22); }
+.pel-trigger:active .pel-name { transform: translateX(-.06em) scale(.985); transition-duration: .12s; }
+@media (hover: hover) and (pointer: fine) {
+  .pel-trigger:hover .pel-name { transform: translateX(-.06em); }
+  .pel-trigger:hover .pel-when { transform: translateX(.4rem); color: var(--pel-ink); }
+  .pel-row[data-open="false"] .pel-trigger:hover .pel-x { transform: rotate(90deg); }
 }
-.commit-card::after {
-  inset: -1px; padding: 1px;
-  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), var(--glow), transparent 70%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+.pel-row[data-lit="true"] .pel-when, .pel-row[data-lit="true"] .pel-role, .pel-row[data-lit="true"] .pel-label { color: var(--pel-ink); }
+.pel-panel { display: grid; grid-template-rows: 0fr; position: relative; z-index: 1; transition: grid-template-rows .2s var(--pel-ease); }
+.pel-row[data-open="true"] .pel-panel { grid-template-rows: 1fr; transition-duration: .32s; }
+.pel-clip { overflow: hidden; min-height: 0; }
+.pel-body {
+  display: grid; grid-template-columns: minmax(8.5rem, 15rem) minmax(0, .85fr) minmax(0, 1.3fr); column-gap: 1.5rem; row-gap: 1.25rem;
+  padding: .15rem var(--pel-pad) clamp(1.6rem, 3.2cqi, 2.6rem);
+  opacity: 0; transform: translateY(-6px); transition: opacity .14s ease, transform .22s var(--pel-ease);
 }
-.commit:hover .commit-card::before, .commit:hover .commit-card::after { opacity: 1; }
-
-/* HEAD is live: its border slowly turns through the lane colours. */
-.commit.is-head .commit-card {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(#151a16, #141413) padding-box,
-    conic-gradient(from var(--aurora-angle), var(--head), var(--lane-1), var(--lane-0), var(--head)) border-box;
-  box-shadow: 0 30px 70px -40px rgba(61, 220, 132, .5), 0 0 40px -18px rgba(255, 90, 31, .35);
-  animation: aurora-spin 6s linear infinite;
+.pel-row[data-open="true"] .pel-body { opacity: 1; transform: none; transition: opacity .28s ease .06s, transform .32s var(--pel-ease) .03s; }
+.pel-meta { grid-column: 2; margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.75rem; row-gap: .6rem; align-content: start; font-size: .875rem; line-height: 1.4; }
+.pel-label { color: var(--pel-muted); font: 500 .72rem/1.6 var(--mono); text-transform: uppercase; letter-spacing: .1em; transition: color .3s ease; }
+.pel-meta dd { margin: 0; font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.pel-meta a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; border-radius: 2px; }
+.pel-meta a:hover { text-decoration-thickness: 2px; color: #ff7417; }
+.pel-meta a:focus-visible { outline: 2px solid var(--pel-ink); outline-offset: 2px; }
+.pel-copy { grid-column: 3; font-size: 1rem; line-height: 1.55; max-width: 56ch; color: color-mix(in oklab, var(--pel-ink) 86%, transparent); }
+.pel-copy p { margin: 0 0 .8em; }
+.pel-copy p:last-of-type { margin-bottom: 0; }
+/* One line per hat the role wears: the title, then what it means in practice. */
+.pel-hats { list-style: none; margin: 0; padding: 0; display: grid; gap: .85rem; }
+.pel-hats li { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: .25rem 1.25rem; align-items: baseline; padding-bottom: .85rem; border-bottom: 1px solid var(--pel-line); }
+.pel-hats li:last-child { padding-bottom: 0; border-bottom: 0; }
+.pel-hats b { font: 600 .74rem/1.4 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: #ff7417; }
+.pel-hats span { line-height: 1.5; }
+@container (max-width: 640px) { .pel-hats li { grid-template-columns: minmax(0, 1fr); } }
+.pel-tags { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.pel-tags li { font: 500 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: .45rem .7rem; border: 1px solid var(--pel-line); border-radius: 999px; }
+.pel-foot { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 1rem 2rem; flex-wrap: wrap; margin-top: 1.4rem; font-size: .875rem; color: var(--pel-muted); }
+.pel-note { margin: 0; font-style: italic; font-family: var(--serif); font-size: 1rem; }
+.pel-cta {
+  position: relative; display: inline-flex; align-items: center; gap: .65rem; margin-left: auto; padding: .55rem 0;
+  color: var(--pel-ink); font-family: var(--pel-display); font-size: 1.1rem; font-weight: 600; letter-spacing: -.01em; text-decoration: none; border-radius: 2px;
 }
-.commit.is-head:hover .commit-card {
-  background:
-    linear-gradient(#18201a, #171716) padding-box,
-    conic-gradient(from var(--aurora-angle), var(--head), var(--lane-1), var(--lane-0), var(--head)) border-box;
-}
-
-.gitlog-end { margin: 18px 0 0 80px; font: 500 12px/1.4 var(--mono); color: #a9a59b; letter-spacing: .04em; }
-.gitlog-end b { color: #0d0d0c; background: #e9e4da; padding: 1px 6px; border-radius: 3px; font-weight: 600; margin-right: 10px; }
-@media (max-width: 640px) { .gitlog-end { margin-left: 64px; } }
-@media (prefers-reduced-motion: reduce) { .commit.is-head .commit-card { animation: none; } }
-.commit.is-root .commit-card { background: transparent; border-style: dashed; padding-block: 14px; }
-.commit-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 12px; font: 500 11.5px/1 var(--mono); }
-.commit-hash { color: #ffb005; font: inherit; letter-spacing: .04em; }
-.ref { padding: 4px 8px; border-radius: 6px; border: 1px solid currentColor; text-transform: uppercase; letter-spacing: .06em; font-size: 10.5px; }
-.ref-head { color: var(--head); background: rgba(61, 220, 132, .1); }
-.ref-tag { color: #ffb005; }
-.ref-branch { color: var(--lane-1); }
-.ref-edu { color: var(--lane-0); }
-.ref-wip { color: #a9a59b; border-style: dashed; }
-.commit-meta time { margin-left: auto; color: #a9a59b; text-transform: uppercase; letter-spacing: .08em; }
-.commit h3 { font-size: clamp(22px, 2.4vw, 32px); line-height: 1.08; }
-.commit-org { margin: 6px 0 0; font: italic 20px/1.25 var(--serif); color: #cfcabe; }
-.commit-msg { margin: 12px 0 0; color: #bdb8ad; max-width: 52em; }
-.commit-msg code { font: 500 .85em var(--mono); color: var(--lane-1); }
-.commit-init { font: 500 15px/1.4 var(--mono) !important; letter-spacing: 0 !important; color: #a9a59b; }
-.commit-init span { color: #f4f1ea; }
-.diff { list-style: none; margin: 14px 0 0; padding: 10px 0; border-radius: 10px; background: rgba(126, 226, 168, .05); border: 1px solid rgba(126, 226, 168, .12); font: 400 13.5px/1.5 var(--mono); }
-.diff li { position: relative; padding: 2px 14px 2px 34px; color: #d9f5e3; }
-.diff li::before { content: "+"; position: absolute; left: 14px; color: var(--diff); font-weight: 600; }
-.diff li:hover { background: rgba(126, 226, 168, .08); }
-@media (max-width: 640px) {
-  .xp-cmd { font-size: 10.5px; padding: 10px 12px; letter-spacing: -0.02em; }
-  .commit { padding-left: 64px; }
-  .commit-card { padding: 16px 16px 18px; }
-  .commit-meta time { margin-left: 0; width: 100%; }
-  .diff { font-size: 12.5px; }
-  .diff li { padding-left: 28px; }
-  .diff li::before { left: 11px; }
+.pel-cta::after { content: ""; position: absolute; left: 0; right: 0; bottom: .3rem; height: 1px; background: currentColor; transform-origin: 50% 100%; transition: transform .3s var(--pel-ease); }
+.pel-cta svg { width: 1rem; height: 1rem; flex: none; transition: transform .45s var(--pel-ease); }
+.pel-cta:hover::after, .pel-cta:focus-visible::after { transform: scaleY(2); }
+.pel-cta:hover svg, .pel-cta:focus-visible svg { transform: translateY(3px); }
+.pel-cta:focus-visible { outline: 2px solid var(--pel-ink); outline-offset: 4px; }
+.pel-head, .pel-row, .pel-foot { transition: opacity .7s ease calc(var(--i, 0) * 45ms), transform .85s var(--pel-ease) calc(var(--i, 0) * 45ms); }
+.pel-root[data-enter="pending"] :is(.pel-head, .pel-row, .pel-foot) { opacity: 0; transform: translateY(16px); }
+@container (max-width: 640px) {
+  .pel-trigger { grid-template-columns: minmax(0, 1fr); row-gap: .7rem; }
+  .pel-when { justify-content: space-between; }
+  .pel-namecell { align-items: flex-start; text-align: left; }
+  .pel-name { font-size: clamp(2rem, 12.5cqi, 3.4rem); }
+  .pel-body { grid-template-columns: minmax(0, 1fr); }
+  .pel-meta, .pel-copy { grid-column: 1; }
+  .pel-foot { flex-direction: column; align-items: flex-start; }
+  .pel-cta { margin-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .commit.is-head .commit-dot, .xp-caret { animation: none; }
+  .pel-root *, .pel-head, .pel-row, .pel-foot { transition-duration: .01ms !important; transition-delay: 0s !important; }
 }
-
 
 /* ---------- Journey: a training run ---------- */
 .journey-run { position: relative; border-top: 1px solid var(--line); background: var(--paper); }
